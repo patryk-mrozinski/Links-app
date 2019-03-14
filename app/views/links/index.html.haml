@@ -11,3 +11,6 @@
   %br/
   = link.url
   %br/
+  = link_to "like", like_link_path(link), method: :put, class: "btn btn-default"
+  = link_to "unlike", dislike_link_path(link), method: :put, class: "btn btn-default"
+  = link.get_upvotes.size

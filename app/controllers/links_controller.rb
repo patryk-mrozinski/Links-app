@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_link, only: %i[show edit update destroy]
+  before_action :set_link, only: %i[show edit update destroy like dislike]
 
   def index
     @link = Link.new
@@ -36,6 +36,16 @@ class LinksController < ApplicationController
 
   def destroy
     @link.destroy
+    redirect_to root_path
+  end
+
+  def like
+    @link.upvote_by current_user
+    redirect_to root_path
+  end
+
+  def dislike
+    @link.downvote_from current_user
     redirect_to root_path
   end
 
