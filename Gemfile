@@ -17,6 +17,12 @@ gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
 gem 'jquery-rails'
 gem 'haml', '~> 5.0', '>= 5.0.4'
+gem 'simple_form', '~> 4.1'
+gem 'cancan'
+gem 'acts_as_votable', '~> 0.12.0'
+gem 'acts_as_commentable'
+gem 'friendly_id', '~> 5.2.4'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -27,6 +33,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'meta_request'
 end
 
 group :test do

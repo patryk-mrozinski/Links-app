@@ -1,0 +1,13 @@
+%h2 This is Links page
+
+%h3 Create New Link
+= render 'form'
+
+
+%h2 Here you can find existing links
+
+- @links.each do |link|
+  = link.name
+  %br/
+  = link.url
+  %br/
