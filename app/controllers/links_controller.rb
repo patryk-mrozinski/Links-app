@@ -5,9 +5,12 @@ class LinksController < ApplicationController
   def index
     @link = Link.new
     @links = Link.all
+    @new_comment = Comment.new(user: current_user)
   end
 
-  def show; end
+  def show
+    @new_comment = Comment.build_from(@link, current_user.id)
+  end
 
   def new
     @link = Link.new

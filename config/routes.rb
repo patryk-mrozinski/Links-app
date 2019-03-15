@@ -7,5 +7,6 @@ Rails.application.routes.draw do
       put 'dislike', to: 'links#dislike'
     end
   end
+  resources :comments
   root 'links#index'
 end
