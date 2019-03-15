@@ -1,11 +1,12 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_commet, except: [:create]
 
   def create
     commentable = commentable_type.constantize.find(commentable_id)
     @comment = Comment.build_from(commentable, current_user.id, body)
     if @comment.save
-      make_child_comment
+      make_child_comment(@comment)
       flash[:success] = "Comment was created successfuly"
       redirect_to root_path
     else
@@ -14,7 +15,18 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment.destroy
+    redirect_to root_path
+  end
 
+  def like
+    @comment.upvote_by current_user
+    redirect_to root_path
+  end
+
+  def dislike
+    @comment.downvote_from current_user
+    redirect_to root_path
   end
 
   private
@@ -39,11 +51,15 @@ class CommentsController < ApplicationController
      comment_params[:body]
    end
 
-   def make_child_comment
+   def make_child_comment(comment)
      return "" if comment_id.blank?
 
      parent_comment = Comment.find comment_id
-     @comment.move_to_child_of(parent_comment)
+     comment.move_to_child_of(parent_comment)
+   end
+
+   def set_commet
+     @comment = Comment.find(params[:id])
    end
 
 end

@@ -1,12 +1,9 @@
 class Comment < ActiveRecord::Base
-  acts_as_nested_set :scope => [:commentable_id, :commentable_type]
+  acts_as_nested_set
+  acts_as_votable
 
   validates :body, :presence => true
   validates :user, :presence => true
-
-  # NOTE: install the acts_as_votable plugin if you
-  # want user to vote on the quality of comments.
-  #acts_as_votable
 
   belongs_to :commentable, :polymorphic => true
 
@@ -21,6 +18,10 @@ class Comment < ActiveRecord::Base
       :commentable => obj,
       :body        => comment,
       :user_id     => user_id
+  end
+
+  def root_comment?
+    parent_id.blank?
   end
 
   #helper method to check if a comment has children

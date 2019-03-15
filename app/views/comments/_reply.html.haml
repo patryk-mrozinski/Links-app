@@ -1,0 +1,14 @@
+- comments.each do |comment|
+  = comment.body
+  = comment.children.size
+  - if comment.root_comment?
+    = simple_form_for @new_comment do |f|
+      = f.hidden_field :commentable_id, value: comment.id
+      = f.hidden_field :commentable_type, value: comment.class.name
+      = f.hidden_field :comment_id, value: comment.id
+      = f.text_area :body
+      = f.submit "reply", class: "btn btn-default"
+    = render "comments/reply", comments: comment.children
+  = link_to "like", like_comment_path(comment), method: :put, class: "btn btn-default"
+  = link_to "unlike", dislike_comment_path(comment), method: :put, class: "btn btn-default"
+  = comment.get_upvotes.size
