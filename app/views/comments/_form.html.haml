@@ -1,5 +1,5 @@
 = simple_form_for @new_comment do |f|
   = f.hidden_field :commentable_id, value: commentable.id
   = f.hidden_field :commentable_type, value: commentable.class.name
-  = f.text_area :body
-  = f.submit
+  = f.text_area :body, { style: "width: 25rem;"}
+  = f.submit "Comment", class: "btn btn-primary"

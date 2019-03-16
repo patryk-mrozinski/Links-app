@@ -30,4 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      title: LinksApp
+  links:
+    index:
+      title: Links
+    buttons:
+      create-link: Create New Link

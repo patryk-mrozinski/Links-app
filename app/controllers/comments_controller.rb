@@ -10,6 +10,9 @@ class CommentsController < ApplicationController
       flash[:success] = "Comment was created successfuly"
       redirect_to root_path
     else
+      @links = Link.all
+      @link = Link.new
+      @new_comment = Comment.new(user: current_user)
       render 'links/index', danger: "Sorry"
     end
   end
@@ -36,7 +39,7 @@ class CommentsController < ApplicationController
   end
 
   def commentable_type
-   comment_params[:commentable_type]
+    comment_params[:commentable_type]
   end
 
    def commentable_id

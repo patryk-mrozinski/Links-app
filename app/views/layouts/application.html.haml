@@ -9,12 +9,22 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    = link_to "Create Account", new_user_registration_path, class: "btn btn-default"
-    - if signed_in?
-      = link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-default"
-    - else
-      = link_to "Log in!", user_session_path, class: "btn btn-default"
-    %p.notice= notice
-    %p.alert= alert
 
-    =yield
+    %nav.navbar.navbar-expand-lg.navbar-light{style: "background-color: #e3f2fd;"}
+      .navbar-brand= link_to t('.title'), root_path
+      %button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavAltMarkup", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarNavAltMarkup.collapse.navbar-collapse
+        - if signed_in?
+          .offset-md-10
+            %span= link_to "Logout", destroy_user_session_path, method: :delete, class: " btn btn-default"
+        - else
+          %span= link_to "Log in!", user_session_path, class: "btn btn-default"
+          %span= link_to "Create Account", new_user_registration_path, class: "btn btn-default"
+
+
+
+%p.notice= notice
+%p.alert= alert
+
+=yield

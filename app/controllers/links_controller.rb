@@ -23,6 +23,7 @@ class LinksController < ApplicationController
       redirect_to @link, notice: 'yay'
     else
       @links = Link.all
+      @new_comment = Comment.new(user: current_user)
       render 'index'
     end
   end

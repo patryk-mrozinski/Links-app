@@ -1,6 +1,9 @@
-= simple_form_for @link do |f|
-
-  = f.error_notification
-  = f.input :name
-  = f.input :url
-  = f.button :submit
+.container
+  .col-lg-8
+  .form
+    .form-group
+      = simple_form_for @link do |f|
+        = f.error_notification
+        = f.input :name, required: false
+        = f.input :url, required: false
+        = f.button :submit, class: "btn btn-info"

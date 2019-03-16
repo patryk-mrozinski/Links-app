@@ -1,14 +1,24 @@
 - comments.each do |comment|
-  = comment.body
-  = comment.children.size
-  - if comment.root_comment?
-    = simple_form_for @new_comment do |f|
-      = f.hidden_field :commentable_id, value: comment.id
-      = f.hidden_field :commentable_type, value: comment.class.name
-      = f.hidden_field :comment_id, value: comment.id
-      = f.text_area :body
-      = f.submit "reply", class: "btn btn-default"
-    = render "comments/reply", comments: comment.children
-  = link_to "like", like_comment_path(comment), method: :put, class: "btn btn-default"
-  = link_to "unlike", dislike_comment_path(comment), method: :put, class: "btn btn-default"
-  = comment.get_upvotes.size
+  .mb-2= comment.body
+  .d-flex
+    .p-2
+      = link_to "#{comment.get_upvotes.size} Likes", like_comment_path(comment), method: :put, class: "btn btn-outline-primary btn-sm"
+    .p-2
+      = link_to "#{comment.get_downvotes.size} Unlike", dislike_comment_path(comment), method: :put, class: "btn btn-outline-danger btn-sm"
+    - if comment.root_comment?
+      .p-2
+        %a.btn.btn-primary.btn-sm.mb-3{"aria-controls" => "comment-collapse-#{comment.id}", "aria-expanded" => "false", "data-toggle" => "collapse", href: "#comment-collapse-#{comment.id}", :role => "button"}
+          = "#{comment.children.size} Replies"
+  .d-flex
+    .collapse{id: "comment-collapse-#{comment.id}"}
+      %a.btn.btn-primary.btn-sm{"aria-controls" => "comment-reply#{comment.id}", "aria-expanded" => "false", "data-toggle" => "collapse", href: "#comment-reply-#{comment.id}", :role => "button"}
+        Answer
+      .collapse{id: "comment-reply-#{comment.id}"}
+        = simple_form_for @new_comment do |f|
+          = f.hidden_field :commentable_id, value: comment.id
+          = f.hidden_field :commentable_type, value: comment.class.name
+          = f.hidden_field :comment_id, value: comment.id
+          = f.text_area :body
+          = f.submit "reply", class: "btn btn-default"
+      .card
+        = render "comments/reply", comments: comment.children

@@ -5,4 +5,8 @@ class Link < ApplicationRecord
 
   validates :name, :url, presence: true, length: { minimum:3 }
 
+  def own_by_user?(some_user)
+    user == some_user
+  end
+
 end
