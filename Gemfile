@@ -23,6 +23,9 @@ gem 'acts_as_votable', '~> 0.12.0'
 gem 'acts_as_commentable_with_threading'
 gem 'friendly_id', '~> 5.2.4'
 gem 'will_paginate', '~> 3.1.0'
+gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem "mini_magick"
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

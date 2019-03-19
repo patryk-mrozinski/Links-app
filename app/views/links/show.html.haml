@@ -1,2 +1,4 @@
-= @link.name
-= @link.url
+%ul
+  = image_tag @link.image.url, size: large_image
+  %li= link_to @link.name, "http://#{@link.url}", target: 'blank'
+  %li= link_to @link.url, "htpp://#{@link.url}", target: 'blank'

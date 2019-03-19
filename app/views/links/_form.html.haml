@@ -4,6 +4,7 @@
     .form-group
       = simple_form_for @link do |f|
         = f.error_notification
-        = f.input :name, required: false
+        = f.input :image
+        = f.input :name
         = f.input :url, required: false
         = f.button :submit, class: "btn btn-info"
