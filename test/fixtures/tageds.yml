@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  time: 2019-03-20
+  link: one
+  tag: one
+
+two:
+  name: MyString
+  time: 2019-03-20
+  link: two
+  tag: two

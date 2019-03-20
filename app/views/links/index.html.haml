@@ -15,6 +15,8 @@
             .card-body
               %h5.card-title
                 = link_to link.name, "http://#{link.url}", target: 'blank'
+                %p= link.created_at.strftime("%B %d, %Y")
+                = link.all_tags
               .d-flex
                 .p-2
                   = link_to "#{link.get_upvotes.size} like", like_link_path(link), method: :put, class: "btn btn-outline-primary btn-sm"

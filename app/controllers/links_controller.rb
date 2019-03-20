@@ -4,7 +4,7 @@ class LinksController < ApplicationController
 
   def index
     @link = Link.new
-    @links = Link.all
+    @links = Link.all.order(created_at: :desc)
     @new_comment = Comment.new(user: current_user)
   end
 
@@ -60,6 +60,6 @@ class LinksController < ApplicationController
   end
 
   def link_params
-    params.require(:link).permit(:name, :url, :image)
+    params.require(:link).permit(:name, :url, :image, :all_tags)
   end
 end

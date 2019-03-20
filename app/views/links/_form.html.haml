@@ -5,6 +5,7 @@
       = simple_form_for @link do |f|
         = f.error_notification
         = f.input :image
-        = f.input :name
+        = f.input :name, required: false
         = f.input :url, required: false
+        = f.input :all_tags, label: "Tag"
         = f.button :submit, class: "btn btn-info"
