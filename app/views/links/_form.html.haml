@@ -5,7 +5,7 @@
       = simple_form_for @link do |f|
         = f.error_notification
         = f.input :image
-        = f.input :name, required: false
-        = f.input :url, required: false
-        = f.input :all_tags, label: "Tag"
+        = f.input :name, required: false, input_html: { autocomplete: "off"}
+        = f.input :url, required: false, input_html:  { autocomplete: "off"}
+        = f.input :tag_name, as: :select, collection: Tag.names_collection, selected: @link.selected_tags, label: "Tag", input_html: { class: "tags-select", multiple: 'true'}
         = f.button :submit, class: "btn btn-info"

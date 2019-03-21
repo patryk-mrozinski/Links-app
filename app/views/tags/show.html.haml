@@ -1,0 +1,5 @@
+%h1 Here you will find all links connected to ##{@tag.name}
+
+- @links.each  do |link|
+  = link_to link.name, "http://#{link.url}", target: "blank"
+  %br

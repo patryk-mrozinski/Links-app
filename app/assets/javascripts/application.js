@@ -15,5 +15,12 @@
 //= require turbolinks
 //= require jquery3
 //= require popper
+//= select2.min.js
 //= require bootstrap-sprockets
 //= require_tree .
+
+$( document ).ready(function() {
+  $(".tags-select").select2({
+    tags: true
+  });
+});

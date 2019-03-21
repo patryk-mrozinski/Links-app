@@ -60,6 +60,6 @@ class LinksController < ApplicationController
   end
 
   def link_params
-    params.require(:link).permit(:name, :url, :image, :all_tags)
+    params.require(:link).permit(:name, :url, :image, tag_name: [])
   end
 end

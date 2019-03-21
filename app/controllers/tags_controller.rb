@@ -3,6 +3,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
+    @links = @tag.links
   end
 
 end

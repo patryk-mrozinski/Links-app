@@ -12,6 +12,18 @@ class Link < ApplicationRecord
     Tag.find_by!(name: name).links
   end
 
+  def tag_name=(names)
+    self.tags = transfer_names_into_tags(names)
+  end
+
+  def tag_name
+    tags.pluck(:name).join", "
+  end
+
+  def selected_tags
+    tags.pluck(:name)
+  end
+
   def all_tags=(names)
     self.tags = names.split(',').map do |name|
       Tag.where(name: name).first_or_create!
@@ -24,6 +36,12 @@ class Link < ApplicationRecord
 
   def own_by_user?(some_user)
     user == some_user
+  end
+
+  private
+
+  def transfer_names_into_tags(names)
+    names.map { |name| Tag.find_or_create_by(name: name) }
   end
 
 end
