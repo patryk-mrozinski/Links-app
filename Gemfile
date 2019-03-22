@@ -25,9 +25,12 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'will_paginate', '~> 3.1.0'
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem "mini_magick"
+gem "figaro"
+gem 'omniauth-facebook'
 
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
