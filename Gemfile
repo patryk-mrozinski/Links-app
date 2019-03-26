@@ -27,6 +27,7 @@ gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem "mini_magick"
 gem "figaro"
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 
 group :development, :test do
