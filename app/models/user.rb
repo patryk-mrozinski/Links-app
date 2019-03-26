@@ -2,9 +2,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable
   has_many :links, dependent: :destroy
-  devise :omniauthable, omniauth_providers: %i[facebook google_oauth2]
+  devise :omniauthable, omniauth_providers: %i[facebook google_oauth2 github]
   attr_accessor :avatar, :avatar_cache, :remove_avatar
 
   def self.new_with_session(params, session)

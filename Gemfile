@@ -28,6 +28,7 @@ gem "mini_magick"
 gem "figaro"
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
 
 
 group :development, :test do

@@ -20,7 +20,7 @@ class LinksController < ApplicationController
     @link = current_user.links.build(link_params)
 
     if @link.save
-      redirect_to @link, notice: 'yay'
+      redirect_to root_path, notice: 'yay'
     else
       @links = Link.all
       @new_comment = Comment.new(user: current_user)
