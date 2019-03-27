@@ -13,8 +13,8 @@
       .field
         = f.check_box :remember_me
         = f.label :remember_me
-    = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
-    = link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path
+    = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "popup", "data-width": 600, "data-height": 400
+    = link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "popup", "data-width": 600, "data-height": 400
 
     .actions
       = f.submit "Log in"
