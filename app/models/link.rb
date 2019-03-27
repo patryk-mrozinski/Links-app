@@ -2,8 +2,8 @@ class Link < ApplicationRecord
   acts_as_votable
   acts_as_commentable
   belongs_to :user
-  has_many :tageds
-  has_many :tags, through: :tageds
+  has_many :tageds, dependent: :destroy
+  has_many :tags, through: :tageds, dependent: :destroy
   validates :name, :url, presence: true, length: { minimum:3 }
 
   mount_uploader :image, ImageUploader
