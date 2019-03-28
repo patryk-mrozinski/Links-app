@@ -22,5 +22,6 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:show]
 
+  resources :users, only: %i[show edit]
   root 'links#index'
 end

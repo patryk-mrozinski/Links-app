@@ -13,11 +13,15 @@
       .field
         = f.check_box :remember_me
         = f.label :remember_me
-    = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "popup", "data-width": 600, "data-height": 400
-    = link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "popup", "data-width": 600, "data-height": 400
 
     .actions
       = f.submit "Log in"
+
+  .social-link
+    = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "popup", "data-width": 600, "data-height": 400
+  .social-link
+    = link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "popup", "data-width": 600, "data-height": 400
+
   = render "devise/shared/links"
   %hr.my-4/
   %h5 You dont have an account ? Do you wanna join us, and help take care about links !?

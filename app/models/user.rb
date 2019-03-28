@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: %i[facebook google_oauth2 github]
 
-  attr_accessor :avatar, :avatar_cache, :remove_avatar
+  attr_accessor :image, :image_cache, :remove_image
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -31,6 +31,14 @@ class User < ApplicationRecord
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
     end
+  end
+
+  def follow(user_id)
+    following_relationship.create(following_id: user_id)
+  end
+
+  def unfollow(user_id)
+    following_relationship.find_by(following_id: user_id).destroy
   end
 
 end
