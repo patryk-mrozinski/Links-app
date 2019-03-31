@@ -1,3 +1,25 @@
 = @user.image
 %h4= @user.email
-%h5 here willl be follow
+%span
+- if @user == current_user
+  = link_to 'Edit Profile', edit_user_path(@user.email),
+                            class: 'btn edit-button'
+- else
+  - if current_user_is_following(current_user.id, @user.id)
+    = link_to 'Following', unfollow_user_path(@user),
+                           remote: true,
+                           class: 'btn unfollow-button',
+                           id: 'unfollow-button',
+                           method: :post
+  - else
+    = link_to 'Follow', follow_user_path(@user),
+                        remote: true,
+                        class: 'btn follow-button',
+                        id: 'follow-button',
+                        method: :post
+
+
+%h6 Another users:
+- User.all.each do |user|
+  %ul
+    %li= link_to user.email, user
